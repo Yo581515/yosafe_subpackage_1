@@ -56,7 +56,7 @@ jobs:
     - name: Test with pytest
       run: |
         poetry env info
-        poetry shell
+        source .venv/bin/activate
         pip -V
         pip list
         pwd
