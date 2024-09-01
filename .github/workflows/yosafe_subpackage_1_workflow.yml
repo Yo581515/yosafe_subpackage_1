@@ -58,6 +58,5 @@ jobs:
         pip -V
         pip list
         pwd
-        peotry show
         poetry run pytest
 
