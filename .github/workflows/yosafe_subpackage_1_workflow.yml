@@ -28,7 +28,7 @@ jobs:
         python -m pip install --user pipx
         pipx install poetry 
         python -m pipx ensurepath
-        poetry config virtualenvs.in-project true
+        #poetry config virtualenvs.in-project true
         poetry install
 
     - name: Lint with flake8
