@@ -28,6 +28,8 @@ jobs:
         pipx install poetry 
         python -m pipx ensurepath
         pip install flake8
+        poetry install
+
 
 
     - name: Lint with flake8
@@ -40,5 +42,5 @@ jobs:
         
     - name: Test with pytest
       run: |
-        poetry run pytest
+        pytest
 
