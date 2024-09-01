@@ -55,6 +55,8 @@ jobs:
 
     - name: Test with pytest
       run: |
+        poetry env info
+        poetry shell
         pip -V
         pip list
         pwd
