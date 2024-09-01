@@ -49,15 +49,15 @@ jobs:
     - name: Install Poetry dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        pip -V
-        pip list
-        pwd
-        peotry show
+        poetry lock
         poetry install
 
 
     - name: Test with pytest
       run: |
-        poetry env list
+        pip -V
+        pip list
+        pwd
+        peotry show
         poetry run pytest
 
