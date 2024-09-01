@@ -38,14 +38,21 @@ jobs:
         python -m pipx ensurepath
         pipx install poetry
         poetry config virtualenvs.in-project true
-        poetry install
 
     - name: Cache dependencies
       uses: actions/cache@v4
+      id: cache
       with:
         path: ./.venv
         key: venv-${{ hashFiles('poetry.lock') }}
-        
+
+    - name: Install Poetry dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        poetry lock
+        poetry install
+
+
     - name: Test with pytest
       run: |
         poetry env info
