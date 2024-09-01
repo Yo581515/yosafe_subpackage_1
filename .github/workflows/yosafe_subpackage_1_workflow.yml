@@ -45,6 +45,8 @@ jobs:
       with:
         path: ./.venv
         key: venv-${{ hashFiles('poetry.lock') }}
+        restore-keys: |
+          venv-
 
     - name: Install Poetry dependencies
       if: steps.cache.outputs.cache-hit != 'true'
