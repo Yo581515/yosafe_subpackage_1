@@ -101,10 +101,11 @@ jobs:
           poetry version patch
 
           # Configure Git
-          git config user.name "$G_NAME"
-          git config user.email "$G_EMAIL"
+          git config -global user.name "$G_NAME"
+          git config  -global user.email "$G_EMAIL"  
+          git config --global user.password $G_ACCESS_TOKEN
 
           # Commit and push changes
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
-          git push https://$G_ACCESS_TOKEN@$PARENT_REPOSITORY origin main
+          git push https://@$PARENT_REPOSITORY origin main
