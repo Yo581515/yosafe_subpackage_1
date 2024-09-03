@@ -112,6 +112,7 @@ jobs:
           git commit -m "${{ github.event.head_commit.message }}"
 
         
-          git remote set-url origin https://$G_NAME:$G_ACCESS_TOKEN@$PARENT_REPOSITORY
+          git remote set-url origin https://$G_ACCESS_TOKEN@github.com/${G_NAME}/yosafe_packages.git
+
+          # Push changes to the main branch and set it as the upstream branch
           git push --set-upstream origin main
-          git push 
