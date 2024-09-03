@@ -97,13 +97,6 @@ jobs:
           # Update version
           cd yosafe_packages
 
-
-          # Configure Git with user details
-          git config --global user.name "$G_NAME"
-          git config --global user.email "$G_EMAIL"
-
-
-
           # List contents of the directory for debugging purposes
           ls
 
@@ -117,5 +110,5 @@ jobs:
 
         
           git remote set-url origin https://$G_NAME:$G_ACCESS_TOKEN@$PARENT_REPOSITORY
-          git push --all --set-upstream origin          
+          git push --all --set-upstream origin main       
           git push 
