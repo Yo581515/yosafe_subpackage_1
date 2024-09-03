@@ -116,6 +116,7 @@ jobs:
           git commit -m "${{ github.event.head_commit.message }}"
 
         
-
-          # Push changes using the access token for authentication
-          git push https://$G_NAME:$G_ACCESS_TOKEN@$PARENT_REPOSITORY HEAD:main
+          git remote set-url origin https://$G_NAME:$G_ACCESS_TOKEN@$PARENT_REPOSITORY
+          --set-upstream-to=origin/main
+          
+          git push 
