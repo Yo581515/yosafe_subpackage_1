@@ -96,16 +96,22 @@ jobs:
         run: |
           # Update version
           cd yosafe_packages
+
+
+          # Configure Git with user details
+          git config --global user.name "$G_NAME"
+          git config --global user.email "$G_EMAIL"
+
+          # List contents of the directory for debugging purposes
           ls
+
+          # Ensure Poetry dependencies are locked and update the version
           poetry lock
           poetry version patch
 
-          # Configure Git
-          git config --global user.name "$G_NAME"
-          git config  --global user.email "$G_EMAIL"  
-          git config --global user.password $G_ACCESS_TOKEN
-
-          # Commit and push changes
+          # Commit and push changes to the main branch
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
-          git push https://@$PARENT_REPOSITORY origin main
+
+          # Push changes using the access token for authentication
+          git push https://$G_ACCESS_TOKEN:x-oauth-basic@$PARENT_REPOSITORY HEAD:main
