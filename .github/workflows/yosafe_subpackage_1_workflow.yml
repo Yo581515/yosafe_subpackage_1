@@ -113,5 +113,5 @@ jobs:
 
         
           git remote set-url origin https://$G_NAME:$G_ACCESS_TOKEN@$PARENT_REPOSITORY
-          git push --all --set-upstream origin main       
+          git push --set-upstream origin main
           git push 
