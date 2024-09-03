@@ -101,8 +101,8 @@ jobs:
           poetry version patch
 
           # Configure Git
-          git config -global user.name "$G_NAME"
-          git config  -global user.email "$G_EMAIL"  
+          git config --global user.name "$G_NAME"
+          git config  --global user.email "$G_EMAIL"  
           git config --global user.password $G_ACCESS_TOKEN
 
           # Commit and push changes
