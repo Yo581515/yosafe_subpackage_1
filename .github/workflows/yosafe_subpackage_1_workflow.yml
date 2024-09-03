@@ -95,6 +95,7 @@ jobs:
       - name: Update version and commit changes
         run: |
           # Update version
+          cd yosafe_packages
           ls
           #poetry lock
           #poetry version patch
