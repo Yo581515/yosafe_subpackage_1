@@ -217,6 +217,17 @@ files = [
 ]
 
 [[package]]
+name = "panadas"
+version = "0.2"
+description = "A simple Python package"
+optional = false
+python-versions = "*"
+files = [
+    {file = "panadas-0.2-py3-none-any.whl", hash = "sha256:ccd65415ed77170bc5c6d28fa1878852f0830fe24c825ba1ffb013913cfefb0c"},
+    {file = "panadas-0.2.tar.gz", hash = "sha256:1aadda5c605388f07cf03ffd439e328ae51524850cb758cdfe7a7c09bda58406"},
+]
+
+[[package]]
 name = "pandas"
 version = "2.2.2"
 description = "Powerful data structures for data analysis, time series, and statistics"
@@ -408,4 +419,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "310452f2d8609911036d0e437f9e2c23da266e4f32153374cac9ba8f5cc0d713"
+content-hash = "53d0a446a5e7e19705bd8ece36000a9d8b89ac03e7f02254627a9d18c2e5dfa6"

@@ -46,7 +46,7 @@ jobs:
       id: cache
       with:
         path: ./.venv
-        key: venv-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('**/pyproject.toml') }}
+        key: venv-${{ hashFiles('**/poetry.lock') }}
 
     - name: Install Poetry dependencies
       if: steps.cache.outputs.cache-hit != 'true'
@@ -97,14 +97,14 @@ jobs:
           # Update version
           cd yosafe_packages
           ls
-          #poetry lock
-          #poetry version patch
+          poetry lock
+          poetry version patch
 
           # Configure Git
-          #git config user.name "$G_NAME"
-          #git config user.email "$G_EMAIL"
+          git config user.name "$G_NAME"
+          git config user.email "$G_EMAIL"
 
           # Commit and push changes
-          #git add .
-          #git commit -m "${{ github.event.head_commit.message }}"
-          #git push https://x-access-token:$G_ACCESS_TOKEN@$PARENT_REPOSITORY HEAD:main
+          git add .
+          git commit -m "${{ github.event.head_commit.message }}"
+          git push https://x-access-token:$G_ACCESS_TOKEN@$PARENT_REPOSITORY HEAD:main

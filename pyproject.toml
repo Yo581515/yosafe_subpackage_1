@@ -11,6 +11,7 @@ python = "^3.12"
 pytest = "^8.3.2"
 requests = "^2.32.3"
 pandas = "^2.2.2"
+panadas = "^0.2"
 
 
 [build-system]
