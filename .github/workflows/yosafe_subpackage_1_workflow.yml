@@ -96,6 +96,9 @@ jobs:
         run: |
           # Update version
           cd yosafe_packages
+          
+          git config --global user.name "$G_NAME"
+          git config --global user.email "$G_EMAIL"
 
           # List contents of the directory for debugging purposes
           ls
