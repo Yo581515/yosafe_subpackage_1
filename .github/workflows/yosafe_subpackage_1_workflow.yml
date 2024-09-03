@@ -95,6 +95,8 @@ jobs:
       - name: Update version and commit changes
         run: |
           # Update version
+          ls
+          poetry lock
           poetry version patch
 
           # Configure Git
