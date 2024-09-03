@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  install-dependencies:
+  test-subpackage-1:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -59,3 +59,30 @@ jobs:
         pip list
         poetry run pytest -s
 
+  
+  conditional-job:
+    runs-on: ubuntu-la test
+    needs: test-subpackage-1
+    if: needs.test-subpackage-1.outputs.cache-hit != 'true'
+    steps:
+    - name: Update parent repository
+      env:
+        G_ACCESS_TOKEN: ${{ secrets.G_ACCESS_TOKEN }}
+        G_EMAIL: ${{ secrets.G_EMAIL }}
+        G_NAME: ${{ secrets.G_NAME }}
+        PARENT_REPOSITORY: ${{ secrets.PARENT_REPOSITORY }}
+      run: |
+        git clone https://$PARENT_REPOSITORY
+        cd yosafe_packages
+        poetry version patch
+        git config user.name "$G_NAME"
+        git config user.email "$G_EMAIL"
+        git add .
+        git commit -m "${{ github.event.head_commit.message }}"
+        git push https://x-access-token:$G_ACCESS_TOKEN@$PARENT_REPOSITORY HEAD:main
+
+          
+ 
+  
+
+ 
