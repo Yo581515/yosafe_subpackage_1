@@ -61,7 +61,7 @@ jobs:
 
   
   conditional-job:
-    runs-on: ubuntu-la test
+    runs-on: ubuntu-latest
     needs: test-subpackage-1
     if: needs.test-subpackage-1.outputs.cache-hit != 'true'
     steps:
