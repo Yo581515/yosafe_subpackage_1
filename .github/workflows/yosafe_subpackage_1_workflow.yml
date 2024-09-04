@@ -99,6 +99,7 @@ jobs:
           
           git config --global user.name "$G_NAME"
           git config --global user.email "$G_EMAIL"
+          git config --global user.password "$G_ACCESS_TOKEN"
           
           # List contents of the directory for debugging purposes
           ls
