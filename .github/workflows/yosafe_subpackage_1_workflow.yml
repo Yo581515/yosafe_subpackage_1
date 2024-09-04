@@ -111,7 +111,7 @@ jobs:
 
 
         
-          git remote set-url origin https://x-access-token:$G_ACCESS_TOKEN@github.com/Yo581515/yosafe_packages.git
+          git remote set-url origin https://Yo581515:${{ secrets.G_ACCESS_TOKEN }}@github.com/Yo581515/yosafe_packages.git
           git checkout "${GITHUB_REF:11}"
           # Commit and push changes to the main branch
           git add .
