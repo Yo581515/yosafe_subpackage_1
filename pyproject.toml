@@ -10,8 +10,7 @@ packages = [{include = "yosafe_subpackage_1", from = "src"}]
 python = "^3.12"
 pytest = "^8.3.2"
 requests = "^2.32.3"
-pandas = "^2.2.2"
-panadas = "^0.2"
+pydantic = "^2.8.2"
 
 
 [build-system]

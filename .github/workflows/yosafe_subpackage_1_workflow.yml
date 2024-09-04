@@ -70,7 +70,7 @@ jobs:
       G_ACCESS_TOKEN: ${{ secrets.G_ACCESS_TOKEN }}
       G_EMAIL: ${{ secrets.G_EMAIL }}
       G_NAME: ${{ secrets.G_NAME }}
-      PARENT_REPOSITORY: ${{ secrets.PARENT_REPOSITORY }}
+      G_REPOSITORY: ${{ secrets.G_REPOSITORY }}
     steps:
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -89,31 +89,22 @@ jobs:
 
       - name: Clone the parent repository
         run: |
-          git clone https://github.com/Yo581515/yosafe_packages.git
+          git clone https://github.com/$G_NAME/$G_REPOSITORY.git
           cd yosafe_packages
 
       - name: Update version and commit changes
         run: |
           # Update version
           cd yosafe_packages
-          
           git config --global user.name "$G_NAME"
           git config --global user.email "$G_EMAIL"
           git config --global user.password "$G_ACCESS_TOKEN"
-          
-          # List contents of the directory for debugging purposes
-          ls
+          git remote set-url origin https://$G_NAME:$G_ACCESS_TOKEN@github.com/$G_NAME/$G_REPOSITORY.git
 
-          # Ensure Poetry dependencies are locked and update the version
+
           poetry lock
           poetry version patch
 
-
-
-        
-          git remote set-url origin https://Yo581515:$G_ACCESS_TOKEN@github.com/Yo581515/yosafe_packages.git
-          git checkout "${GITHUB_REF:11}"
-          # Commit and push changes to the main branch
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
           git push
