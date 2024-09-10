@@ -87,7 +87,7 @@ jobs:
       - name: Get current version from pyproject.toml
         id: get_current_version
         run: |
-          current_version=$(poetry version --short)
+          current_version=$(git show HEAD~0:pyproject.toml | grep -E 'version\s*=\s*\"' | sed 's/version = "//' | sed 's/"//')
           echo "current_version=$current_version" >> $GITHUB_ENV
           echo $(git log)
 
