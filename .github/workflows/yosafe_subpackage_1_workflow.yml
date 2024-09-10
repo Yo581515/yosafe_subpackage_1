@@ -106,10 +106,18 @@ jobs:
       - name: Get previous version from the last commit
         id: get_previous_version
         run: |
-          # Get the previous version from the last commit
-          previous_version=$(git show HEAD~1:pyproject.toml | grep -E 'version\s*=\s*\"' | sed 's/version = "//' | sed 's/"//')
-          echo "previous_version=$previous_version"
+          # Check if the previous commit exists
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            # Get the previous version from the last commit's pyproject.toml
+            previous_version=$(git show HEAD~1:pyproject.toml | grep -E 'version\s*=\s*\"' | sed 's/version = "//' | sed 's/"//')
+            echo "previous_version=$previous_version"
+          else
+            echo "No previous commit found."
+            previous_version="none"
+          fi
           echo "previous_version=$previous_version" >> $GITHUB_ENV
+      
+
             
       - name: Check if version has changed
         id: check_version_change
