@@ -15,7 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v4
+
+    - name: Checkout the code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2  
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -84,7 +89,7 @@ jobs:
           python -m pip install --user pipx
           python -m pipx ensurepath
 
-          
+
           # Install Poetry
           pipx install poetry
           poetry config virtualenvs.in-project true
