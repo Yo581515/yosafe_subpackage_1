@@ -139,8 +139,6 @@ jobs:
           cd yosafe_packages
           pwd
           ls
-          # Update version
-          cd yosafe_packages
           git config --global user.name "$G_NAME"
           git config --global user.email "$G_EMAIL"
           git config --global user.password "$G_ACCESS_TOKEN"
