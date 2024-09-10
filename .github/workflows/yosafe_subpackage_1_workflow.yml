@@ -91,8 +91,6 @@ jobs:
       - name: Get current version from pyproject.toml
         id: get_current_version
         run: |
-          poetry lock
-          pwd
           current_version=$(poetry version --short)
           echo "current_version=$current_version" >> $GITHUB_ENV
 
