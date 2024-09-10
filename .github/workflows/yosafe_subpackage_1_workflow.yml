@@ -99,6 +99,7 @@ jobs:
         run: |
           current_version=$(poetry version --short)
           echo "current_version=$current_version" >> $GITHUB_ENV
+          echo $(git log)
 
       - name: Get previous version from the last commit
         id: get_previous_version
