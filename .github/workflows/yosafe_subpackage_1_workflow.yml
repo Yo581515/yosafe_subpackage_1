@@ -18,8 +18,6 @@ jobs:
 
     - name: Checkout the code
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 2  
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -103,7 +101,7 @@ jobs:
         run: |
           current_version=$(poetry version --short)
           echo "current_version=$current_version" >> $GITHUB_ENV
-          echo $(git log -3 --oneline)
+          echo $(git log)
 
       - name: Get previous version from the last commit
         id: get_previous_version
@@ -122,6 +120,7 @@ jobs:
           else
             echo "Version has not been updated."
             echo "version_updated=false" >> $GITHUB_ENV
+          fi
 
       - name: Update parent package
         if: env.version_updated == 'true'
