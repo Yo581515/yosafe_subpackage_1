@@ -91,16 +91,7 @@ jobs:
       - name: Get current version from pyproject.toml
         id: get_current_version
         run: |
-          echo "hi1"
-          echo "hi2"
-          echo "hi3"
-          cd ../..
           pwd
-          ls
-          echo "hi1"
-          echo "hi2"
-          echo "hi3"
-
           current_version=$(poetry version --short)
           echo "current_version=$current_version" >> $GITHUB_ENV
 
