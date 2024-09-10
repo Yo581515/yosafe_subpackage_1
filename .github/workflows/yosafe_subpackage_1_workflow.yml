@@ -94,6 +94,7 @@ jobs:
           echo "hi1"
           echo "hi2"
           echo "hi3"
+          cd ..
           pwd
           ls
           echo "hi1"
