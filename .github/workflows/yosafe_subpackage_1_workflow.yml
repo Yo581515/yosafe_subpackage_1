@@ -84,17 +84,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install pipx and Poetry
-        run: |
-          # Install pipx
-          python -m pip install --user pipx
-          python -m pipx ensurepath
-
-
-          # Install Poetry
-          pipx install poetry
-          poetry config virtualenvs.in-project true
-
       - name: Get current version from pyproject.toml
         id: get_current_version
         run: |
@@ -116,8 +105,6 @@ jobs:
           fi
           echo "previous_version=$previous_version" >> $GITHUB_ENV
       
-
-            
       - name: Check if version has changed
         id: check_version_change
         run: |
@@ -128,6 +115,16 @@ jobs:
             echo "Version has not been updated."
             echo "version_updated=false" >> $GITHUB_ENV
           fi
+
+      - name: Install pipx and Poetry
+        if: env.version_updated == 'true'
+        run: |
+          # Install pipx
+          python -m pip install --user pipx
+          python -m pipx ensurepath
+          # Install Poetry
+          pipx install poetry
+          poetry config virtualenvs.in-project true
 
       - name: Update parent package
         if: env.version_updated == 'true'
