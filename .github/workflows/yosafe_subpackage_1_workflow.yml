@@ -59,7 +59,7 @@ jobs:
       run: |
         source .venv/bin/activate
         pip list
-        poetry run pytest -s
+        poetry run pytest -sv
 
   
   updating-parent-package:
