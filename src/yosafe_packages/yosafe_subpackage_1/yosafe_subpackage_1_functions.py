@@ -18,5 +18,7 @@ def yosafe_get_yosafe_subpackage_1():
 def yosafe_add(a, b):
     return a + b
 
+def to_capitllal_letters(txt: str) -> str:
+    return txt.upper()
 
 
